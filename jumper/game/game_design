@@ -1,0 +1,29 @@
+Director():
+--------
+__Variables__
+(Jumper) jumper
+(WordBank) word_bank
+
+__Functions__
+start_game()
+do_updates()
+get_inputs()
+do_outputs()
+
+Jumper
+------
+__Variables__
+(str) picture[] : Each line of the ascii picture
+
+__Functions__
+str() : prints picture to console
+
+Word Bank?
+----------
+__Variables__
+(str) word
+(str) words[]
+
+__Functions__
+choose_word() : Randomly picks a (str) word from list
+get_word() : Returns word
