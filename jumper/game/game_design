@@ -1,29 +1,32 @@
-Director():
+Director() (Brandon)
 --------
 __Variables__
 (Jumper) jumper
 (WordBank) word_bank
+EXTRA guessed_letters[]
 
 __Functions__
 start_game()
 do_updates()
 get_inputs()
 do_outputs()
+L print(word)
+L print(jumper)
 
-Jumper
+Jumper (Tom)
 ------
 __Variables__
 (str) picture[] : Each line of the ascii picture
 
 __Functions__
-str() : prints picture to console
+str() : prints each line in picture[] to console
 
-Word Bank?
+Word Bank (James)
 ----------
 __Variables__
-(str) word
+(str) choosen_word
 (str) words[]
 
 __Functions__
-choose_word() : Randomly picks a (str) word from list
-get_word() : Returns word
+choose_word() : Randomly picks a (str) word from word list
+get_word() : Returns (str) choosen_word
