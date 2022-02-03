@@ -1,3 +1,5 @@
+#from game.jumper import Jumper
+from game.word_bank import Word_bank
 
 class Director:
     """A person who directs the game. 
@@ -14,6 +16,12 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
+        #self.jumper = Jumper()
+        self.word_bank = Word_bank()
+        self.guessed_letters = []
+        self.is_playing = True
+        self.word_bank.choose_word()
+        self.word = list(self.word_bank.get_word())
 
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -22,25 +30,10 @@ class Director:
             self (Director): an instance of Director.
         """
         while self.is_playing:
-            self.get_inputs()
             self.do_updates()
             self.do_outputs()
-
-    def get_inputs(self):
-        """Ask the user if they want to roll.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-
-       
-    def do_updates(self):
-        """Updates the player's score.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        
+            self.get_inputs()
+        exit()
 
     def do_outputs(self):
         """Displays the dice and the score. Also asks the player if they want to roll again. 
@@ -48,4 +41,51 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        
+        word_display = ""
+        for letter in self.word:
+            if letter in self.guessed_letters:
+                word_display += letter + " "
+            else:
+                word_display += "_ "
+
+        print(word_display)
+        #print(self.jumper)
+
+    def get_inputs(self):
+        """Ask the user if they want to roll.
+
+        Args:
+            self (Director): An instance of Director.
+        """
+        if not self.is_playing:
+            return
+        try:
+            guess = input("Guess a letter [a-z]: ")[0]
+            letter_ascii = ord(guess.lower()) # Converts char string to ascii
+                
+            if 97 <= letter_ascii <= 122: #[97-122] Lowercase Alphabet
+                if guess not in self.guessed_letters:
+                    self.guessed_letters.append(guess)
+                else:
+                    print("You've already guessed \"" + guess + "\"")                 
+            else:
+                print("Please enter a valid letter")
+        except: #If input is blank
+            print("Please try again")
+       
+    def do_updates(self):
+        """Checks if letters guessed are correct
+
+        Args:
+            self (Director): An instance of Director.
+        """
+        if self.check_win():
+            self.is_playing = False
+        #else:
+            #remove line from picture
+
+    def check_win(self):
+        for letter in self.word:
+            if letter not in self.guessed_letters :
+                return False
+        return True
