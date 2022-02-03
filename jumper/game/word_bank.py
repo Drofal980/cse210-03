@@ -1,4 +1,4 @@
-from random import random
+import random
 
 class Word_bank:
 
@@ -7,7 +7,7 @@ class Word_bank:
         self._words = ['waffles','dogs','cats','class','happy']
 
     def choose_word(self):
-        self._choosen_word = random(self._words)
+        self._choosen_word = random.choice(self._words)
     
     def get_word(self):
         return self._choosen_word
