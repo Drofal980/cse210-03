@@ -12,6 +12,7 @@ get_inputs()
 do_outputs()
 L print(word)
 L print(jumper)
+check_win()
 
 Jumper (Tom)
 ------
