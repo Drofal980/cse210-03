@@ -19,8 +19,19 @@ Jumper (Tom)
 __Variables__
 (str) picture[] : Each line of the ascii picture
 
+pitcture[]
+parachute_cut
+end_parachute
+
+
+
 __Functions__
 str() : prints each line in picture[] to console
+
+wrong_guess()
+parachute_ended()
+
+
 
 Word Bank (James)
 ----------
