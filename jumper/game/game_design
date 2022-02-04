@@ -20,6 +20,7 @@ __Variables__
 (str) picture[] : Each line of the ascii picture
 
 pitcture[]
+
 parachute_cut
 end_parachute
 
@@ -27,7 +28,7 @@ end_parachute
 
 __Functions__
 str() : prints each line in picture[] to console
-
+display_picture()
 wrong_guess()
 parachute_ended()
 
