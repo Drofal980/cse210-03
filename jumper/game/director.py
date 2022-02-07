@@ -1,4 +1,4 @@
-#from game.jumper import Jumper
+from game.jumper import jumper
 from game.word_bank import Word_bank
 
 class Director:
@@ -16,7 +16,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        #self.jumper = Jumper()
+        self.jumper = jumper()
         self.word_bank = Word_bank()
         self.guessed_letters = []
         self.is_playing = True
@@ -49,7 +49,12 @@ class Director:
                 word_display += "_ "
 
         print(word_display)
-        #print(self.jumper)
+        if self.jumper.if_dead():
+            self.is_playing = False
+        
+        print(self.jumper)
+        print("^^^^^^^^^")
+        print()
 
     def get_inputs(self):
         """Ask the user if they want to roll.
@@ -66,6 +71,10 @@ class Director:
             if 97 <= letter_ascii <= 122: #[97-122] Lowercase Alphabet
                 if guess not in self.guessed_letters:
                     self.guessed_letters.append(guess)
+
+                    if self.check_letter(guess) == False:
+                        self.jumper.remove_line(0) 
+
                 else:
                     print("You've already guessed \"" + guess + "\"")                 
             else:
@@ -81,11 +90,15 @@ class Director:
         """
         if self.check_win():
             self.is_playing = False
-        #else:
-            #remove line from picture
 
     def check_win(self):
         for letter in self.word:
             if letter not in self.guessed_letters :
                 return False
         return True
+
+    def check_letter(self, letter):
+        if letter in self.word:
+            return True
+        return False
+            
